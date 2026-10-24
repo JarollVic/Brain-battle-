@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0a"><title>Brain Battle — le quiz de culture générale</title><meta name="description" content="Brain Battle : 100 LV, 20 questions par partie, culture générale, langues, sciences, Togo et Afrique. Gratuit, sans inscription."><meta property="og:title" content="Brain Battle"><meta property="og:description" content="Valide chaque LV avec 15 bonnes réponses sur 20 !"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🧠%3C/text%3E%3C/svg%3E">
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:radial-gradient(circle at 50% -10%,#3a0a10,#0a0a0a 45%);color:#fff;font:16px system-ui,sans-serif;padding-bottom:80px;min-height:100vh}
+#v{max-width:520px;margin:auto;padding:12px}
+.top{display:flex;align-items:center;gap:7px;margin-bottom:10px}.top b{flex:1;font-size:17px;letter-spacing:1px}.top b span{color:#e10b1f}
+.pill{background:#1c1c1c;border:1px solid #333;border-radius:20px;padding:5px 9px;font-size:13px;white-space:nowrap}
+.card{background:linear-gradient(145deg,#1a1a1a,#101010);border:1px solid #2e2e2e;border-radius:16px;padding:14px;margin-bottom:12px;animation:in .3s}
+.row{display:flex;align-items:center;gap:10px}.sp{justify-content:space-between}
+.btn{width:100%;border:0;border-radius:14px;padding:15px;font-weight:800;font-size:16px;color:#fff;background:linear-gradient(135deg,#ff2d44,#b30018);box-shadow:0 6px 18px #e10b1f44;margin-top:8px}
+.btn:active{transform:scale(.97)}.btn.w{background:#fff;color:#000;box-shadow:none}.btn:disabled{opacity:.4}
+.sm{border:1px solid #444;background:#1c1c1c;color:#fff;border-radius:12px;padding:10px 6px;font-size:13px;flex:1}
+.ib{border:1px solid #444;background:#1c1c1c;color:#fff;border-radius:12px;padding:8px 12px;font-size:18px}
+.op{display:block;width:100%;text-align:left;margin-top:9px;padding:14px;border-radius:13px;border:1px solid #3a3a3a;background:#1c1c1c;color:#fff;font-size:16px}
+.op.g{background:#0f3b24;border-color:#3ddc84;animation:pop .4s}.op.b{background:#4a0d14;border-color:#e10b1f;animation:shk .35s}
+.inp,select,textarea{width:100%;padding:12px;border-radius:12px;border:1px solid #444;background:#111;color:#fff;font:inherit;margin:4px 0 8px}
+.q{font-size:21px;font-weight:800;line-height:1.3;margin:12px 0}
+.pb{height:8px;background:#2a2a2a;border-radius:8px;overflow:hidden;margin:6px 0}.pb i{display:block;height:100%;background:#e10b1f;transition:width .4s}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}.g3 b{display:block;font-size:19px}
+small,.mu{color:#aaa;font-size:13px}h2{margin:4px 0 10px}
+nav{position:fixed;bottom:0;left:0;right:0;display:grid;grid-template-columns:repeat(6,1fr);background:#0f0f0ff2;border-top:1px solid #2e2e2e;padding:6px 2px calc(6px + env(safe-area-inset-bottom));z-index:20}
+nav button{background:0;border:0;color:#999;font-size:10px;padding:4px 0}nav i{display:block;font-style:normal;font-size:19px}nav .on{color:#fff;box-shadow:inset 0 -3px #e10b1f}
+.lv{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}.lv button{padding:12px 0;border-radius:11px;border:1px solid #333;background:#1c1c1c;color:#fff;font-weight:700}
+.lv .dn{background:#0f3b24;border-color:#3ddc84}.lv .cu{background:#e10b1f;animation:pul 1.2s infinite}.lv .lk{opacity:.4}
+.md{position:fixed;inset:0;background:#000c;display:flex;align-items:center;justify-content:center;z-index:50;padding:20px}
+.mb{background:#151515;border:1px solid #444;border-radius:20px;padding:22px;text-align:center;max-width:380px;width:100%;animation:pop .35s}.mb .e{font-size:54px}
+.fx{position:fixed;top:16%;left:0;right:0;text-align:center;font-size:32px;font-weight:900;text-shadow:0 0 20px #e10b1f;z-index:40;pointer-events:none;animation:fx 1.4s forwards}
+.ts{position:fixed;bottom:92px;left:50%;transform:translateX(-50%);background:#222;border:1px solid #555;padding:10px 14px;border-radius:12px;z-index:60;font-size:14px;max-width:90%;text-align:center}
+.cf{position:fixed;top:-14px;width:8px;height:12px;z-index:45;animation:fall 1.6s ease-in forwards}
+.av{font-size:34px;background:#222;border-radius:14px;width:54px;height:54px;display:grid;place-items:center}
+.ok{color:#3ddc84}.ko{color:#ff5a5f}
+@keyframes in{from{opacity:0;transform:translateY(8px)}}@keyframes pop{50%{transform:scale(1.07)}}
+@keyframes shk{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}@keyframes pul{50%{box-shadow:0 0 14px #e10b1f}}
+@keyframes fx{0%{opacity:0;transform:scale(.4)}20%{opacity:1;transform:scale(1.15)}80%{opacity:1}100%{opacity:0;transform:translateY(-40px)}}
+@keyframes fall{to{transform:translate(var(--x),105vh) rotate(720deg)}}
+
+body{background:radial-gradient(circle at 50% -10%,#4a0710,#000 50%);padding-bottom:104px}
+nav{left:10px;right:10px;bottom:10px;border-radius:26px;background:rgba(255,255,255,.09);-webkit-backdrop-filter:blur(20px) saturate(1.8);backdrop-filter:blur(20px) saturate(1.8);border:1px solid rgba(255,255,255,.2);box-shadow:0 8px 30px rgba(0,0,0,.6),inset 0 1px rgba(255,255,255,.25);padding:6px 4px}
+nav button{border-radius:18px;transition:.25s}nav .on{color:#fff;background:rgba(225,11,31,.45);box-shadow:none;transform:translateY(-2px)}
+.op.g{background:#fff;color:#000;border-color:#fff}.op.sl{border-color:#fff;background:#2c2c2c}.ok{color:#fff}.ko{color:#ff4d5e}
+.zz{position:relative;margin-bottom:12px}.zz svg{position:absolute;left:0;top:0;width:100%}
+.nd{position:absolute;width:64px;height:64px;margin-left:-32px;border-radius:50%;border:3px solid #444;background:#222;color:#fff;font-weight:900;font-size:13px;line-height:1.15;padding:0}.nd small{display:block;font-size:9px;color:inherit}
+.nd.dn{background:#fff;color:#000;border-color:#e10b1f}.nd.cu{background:#e10b1f;border-color:#fff;animation:pul 1.2s infinite}.nd:disabled{opacity:.5}
+.rb{position:absolute;background:#e10b1f;border-radius:10px;padding:5px 10px;font-weight:800;font-size:12px}
+
+:root{padding-top:env(safe-area-inset-top,0px);box-sizing:border-box}
+nav{grid-template-columns:repeat(5,1fr);bottom:calc(10px + env(safe-area-inset-bottom,0px))}
+.sk{position:sticky;top:0;z-index:15;background:rgba(0,0,0,.82);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);padding:6px 4px 10px;margin:0 -4px 8px;border-radius:0 0 18px 18px}
+.top b{letter-spacing:.5px;font-size:16px}
+</style></head><body>
+<div id="v"></div><noscript><p style="padding:20px">Active JavaScript pour jouer à Brain Battle.</p></noscript>
+<nav id="nav"></nav>
+<script>
+(function(){'use strict';
+var K='bb4',KX='bb4x',MAXL=100;
+var CATS=['Culture générale','Logique','Énigmes','Sciences','Histoire','Géographie','Togo','Français','Maths','Sport','Personnalités','Anglais','Espagnol','Animaux','Chimie','Technologie','Afrique','Nature','Physique','Questions pièges','Religion','Littérature','Football'];
+var $=function(s){return document.querySelector(s)};
+var esc=function(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})};
+var mem={},noLS=false;
+try{localStorage.setItem('t','1');localStorage.removeItem('t')}catch(e){noLS=true}
+function lget(k){try{return localStorage.getItem(k)}catch(e){return mem[k]||null}}
+function lset(k,v){try{localStorage.setItem(k,v)}catch(e){mem[k]=v}}
+
+/* ===== BANQUE DE QUESTIONS : [catégorie,difficulté 1-5,question,choix[] OU réponses "a|b",indexBonne,explication] ===== */
+var BASE=[
+[0,1,'Combien de couleurs compte l’arc-en-ciel ?',['5','6','7','8'],2,'Rouge, orange, jaune, vert, bleu, indigo, violet.'],
+[0,3,'Qui a peint « La Joconde » ?',['Michel-Ange','Léonard de Vinci','Raphaël','Picasso'],1,'Léonard de Vinci, vers 1503-1519.'],
+[0,3,'Que signifie le sigle ONU ?',['Organisation des Nations unies','Office national unifié','Organisation navale universelle','Union des nations ouvertes'],0,'Créée en 1945.'],
+[0,4,'Combien de touches compte un piano standard ?',['76','88','92','100'],1,'52 blanches et 36 noires.'],
+[0,5,'Dans quel pays est né le jeu d’échecs selon la tradition la plus répandue ?',['Chine','Perse','Inde','Grèce'],2,'Il descend du chaturanga indien.'],
+[1,1,'Suite : 2, 4, 6, 8, … ?','10','On ajoute 2.'],
+[1,2,'Suite : 3, 6, 12, 24, … ?','48','On double à chaque fois.'],
+[1,3,'Suite : 1, 1, 2, 3, 5, 8, … ?','13','Suite de Fibonacci : 5 + 8 = 13.'],
+[1,4,'Suite : 1, 4, 9, 16, 25, … ?','36','Les carrés : 6² = 36.'],
+[1,5,'5 machines font 5 objets en 5 minutes. Combien de minutes pour 100 machines et 100 objets ?',['1','5','20','100'],1,'Chaque machine fait 1 objet en 5 minutes.'],
+[2,1,'Qu’est-ce qui a des touches mais n’ouvre aucune porte ?','piano|clavier','Un piano (ou un clavier).'],
+[2,2,'Plus on m’enlève de choses, plus je deviens grand. Qui suis-je ?','trou','Un trou.'],
+[2,3,'Je parle sans bouche et j’entends sans oreilles. Qui suis-je ?','echo','Un écho.'],
+[2,4,'J’ai des villes sans maisons et des fleuves sans eau. Qui suis-je ?','carte','Une carte géographique.'],
+[2,5,'Qu’est-ce qui se brise dès qu’on prononce son nom ?','silence','Le silence.'],
+[3,1,'Quelle planète est la plus proche du Soleil ?',['Vénus','Mercure','Mars','Terre'],1,'Mercure.'],
+[3,2,'Quel est le symbole chimique de l’or ?',['Ag','Au','Or','Fe'],1,'Au, du latin aurum.'],
+[3,3,'Quelle est la plus grande planète du système solaire ?',['Saturne','Neptune','Jupiter','Terre'],2,'Jupiter.'],
+[3,4,'Combien d’os compte le squelette d’un adulte ?',['106','206','306','412'],1,'206 os.'],
+[3,5,'Quel est le numéro atomique du carbone ?','6','Le carbone a 6 protons.'],
+[4,2,'Qui fut le premier président des États-Unis ?',['Lincoln','Jefferson','George Washington','Adams'],2,'En fonction de 1789 à 1797.'],
+[4,3,'En quelle année l’homme a-t-il marché sur la Lune ?',['1959','1969','1979','1989'],1,'Apollo 11, juillet 1969.'],
+[4,3,'Quelle civilisation a construit les pyramides de Gizeh ?',['Romaine','Grecque','Égyptienne','Maya'],2,'L’Égypte ancienne.'],
+[4,4,'Quelle cité fut ensevelie par le Vésuve en 79 ?',['Athènes','Carthage','Pompéi','Troie'],2,'Pompéi.'],
+[4,5,'Quelle conférence (1884-1885) a organisé le partage de l’Afrique entre puissances européennes ?',['Vienne','Berlin','Yalta','Versailles'],1,'La conférence de Berlin.'],
+[5,2,'Quel est le plus long fleuve d’Afrique ?',['Niger','Congo','Nil','Zambèze'],2,'Le Nil.'],
+[5,3,'Quelle est la capitale de l’Australie ?',['Sydney','Canberra','Melbourne','Perth'],1,'Canberra.'],
+[5,3,'Quel est le plus haut sommet du monde ?',['K2','Mont Blanc','Everest','Kilimandjaro'],2,'L’Everest, environ 8 849 m.'],
+[5,4,'Quelle est la capitale du Canada ?',['Toronto','Ottawa','Montréal','Vancouver'],1,'Ottawa.'],
+[5,5,'Quel est le lac le plus profond du monde ?',['Victoria','Baïkal','Tanganyika','Supérieur'],1,'Le Baïkal, plus de 1 600 m.'],
+[6,1,'Quelle est la capitale du Togo ?',['Kara','Lomé','Sokodé','Kpalimé'],1,'Lomé.'],
+[6,2,'Quelle est la langue officielle du Togo ?',['Anglais','Éwé','Français','Kabyè'],2,'Le français.'],
+[6,3,'En quelle année le Togo est-il devenu indépendant ?',['1957','1960','1963','1975'],1,'Le 27 avril 1960.'],
+[6,4,'Quel est le point culminant du Togo ?',['Mont Agou','Mont Cameroun','Mont Kenya','Mont Nimba'],0,'Le mont Agou, 986 m.'],
+[6,5,'Combien d’États membres compte l’Union africaine ?',['45','50','55','60'],2,'55 États membres.'],
+[7,1,'Quel est le pluriel de « cheval » ?',['chevals','chevaux','chevaus','chevales'],1,'Cheval → chevaux.'],
+[7,2,'Complète : « Il faut que tu … à l’heure. »',['es','sois','seras','étais'],1,'Subjonctif : que tu sois.'],
+[7,3,'Quel est le participe passé de « résoudre » ?',['résolvé','résous','résolu','résoudu'],2,'Résolu.'],
+[7,4,'Quelle phrase est correcte ?',['Les pommes que j’ai mangé','Les pommes que j’ai mangées','Les pommes que j’ai mangés','Les pommes que j’ai mangeé'],1,'Accord avec le COD placé avant le verbe.'],
+[7,5,'Que signifie « ubiquité » ?',['Rapidité','Présence en tous lieux','Grande taille','Silence'],1,'Capacité d’être présent partout à la fois.'],
+[8,1,'Combien font 6 × 7 ?',['36','42','48','49'],1,'6 × 7 = 42.'],
+[8,2,'Combien font 15 % de 200 ?','30','200 × 0,15 = 30.'],
+[8,3,'Résous : 3x + 5 = 20. Que vaut x ?','5','3x = 15, donc x = 5.'],
+[8,4,'Combien font 2⁸ ?','256','2⁸ = 256.'],
+[8,5,'Combien vaut la somme des entiers de 1 à 100 ?','5050','100 × 101 ÷ 2 = 5050.'],
+[9,1,'Combien de joueurs une équipe de football aligne-t-elle sur le terrain ?',['9','10','11','12'],2,'Onze, gardien compris.'],
+[9,2,'Quel pays a gagné la Coupe du monde de football 2018 ?',['Croatie','France','Brésil','Allemagne'],1,'La France.'],
+[9,3,'Quelle distance mesure un marathon ?',['21,097 km','42,195 km','50 km','100 km'],1,'42,195 km.'],
+[9,4,'Quelle équipe africaine a atteint les demi-finales de la Coupe du monde 2022 ?',['Sénégal','Maroc','Ghana','Cameroun'],1,'Le Maroc.'],
+[9,5,'En quelle année a eu lieu la première Coupe du monde de football ?',['1920','1930','1950','1900'],1,'1930, en Uruguay.'],
+[10,1,'Qui a écrit « Harry Potter » ?',['J. K. Rowling','Roald Dahl','Tolkien','Stephen King'],0,'J. K. Rowling.'],
+[10,2,'Quel scientifique est associé à la formule E = mc² ?',['Newton','Einstein','Curie','Tesla'],1,'Albert Einstein.'],
+[10,3,'Qui a été président d’Afrique du Sud après 27 ans de prison ?',['Nelson Mandela','Thabo Mbeki','Jacob Zuma','Desmond Tutu'],0,'Nelson Mandela, élu en 1994.'],
+[10,4,'Quel Burkinabè, président de 1983 à 1987, est surnommé le « Che africain » ?',['Compaoré','Sankara','Kaboré','Yaméogo'],1,'Thomas Sankara.'],
+[10,5,'Quelle scientifique a reçu des prix Nobel en physique et en chimie ?',['Rosalind Franklin','Marie Curie','Lise Meitner','Ada Lovelace'],1,'Marie Curie (1903 et 1911).']
+,[13,2,'Quel animal terrestre est le plus rapide ?',['Le lion','Le guépard','Le cheval','L’antilope'],1,'Le guépard.'],
+[13,1,'Quel est le plus grand mammifère terrestre ?',['Girafe','Éléphant d’Afrique','Rhinocéros','Hippopotame'],1,'L’éléphant d’Afrique.'],
+[13,2,'Quel est le seul mammifère capable de voler ?',['L’écureuil volant','La chauve-souris','Le colibri','L’autruche'],1,'La chauve-souris.'],
+[13,3,'De quoi se nourrit surtout le panda géant ?',['De poissons','De bambou','De miel','De fruits de mer'],1,'Il mange surtout du bambou.'],
+[13,4,'Combien de cœurs possède une pieuvre ?',['1','2','3','4'],2,'Trois cœurs.'],
+[13,2,'Comment appelle-t-on un animal qui ne mange que des plantes ?',['Carnivore','Omnivore','Herbivore','Insectivore'],2,'Un herbivore.'],
+[18,1,'Quelle source d’énergie est renouvelable ?',['Charbon','Pétrole','Énergie solaire','Gaz naturel'],2,'Le Soleil se « renouvelle » à l’échelle humaine.'],
+[18,2,'Dans quel état est l’eau à 120 °C (pression normale) ?',['Solide','Liquide','Gazeux','Plasma'],2,'Elle bout à 100 °C : c’est de la vapeur.'],
+[18,3,'Quelle unité mesure la puissance électrique ?',['Volt','Watt','Ampère','Ohm'],1,'Le watt.'],
+[18,4,'Quelle loi relie tension, intensité et résistance ?',['Loi d’Ohm','Loi de Newton','Loi de Kepler','Loi de Hooke'],0,'U = R × I.'],
+[18,5,'Quelle est la valeur approximative de la pesanteur terrestre ?',['1,6 m/s²','9,8 m/s²','24 m/s²','100 m/s²'],1,'Environ 9,8 m/s².'],
+[14,2,'Quelle est la formule chimique de l’eau ?',['CO2','H2O','O2','NaCl'],1,'H2O : deux hydrogènes, un oxygène.'],
+[14,3,'Quel gaz est le plus abondant dans l’air ?',['Oxygène','Azote','Dioxyde de carbone','Argon'],1,'L’azote, environ 78 %.'],
+[14,4,'Quel est le pH d’une solution neutre à 25 °C ?',['0','7','10','14'],1,'pH 7.'],
+[15,2,'Que signifie le sigle « IA » ?',['Internet avancé','Intelligence artificielle','Information active','Interface automatique'],1,'Intelligence artificielle.'],
+[15,3,'À quoi sert un mot de passe robuste ?',['Accélérer Internet','Protéger un compte','Économiser la batterie','Libérer de la mémoire'],1,'Il protège l’accès à ton compte.'],
+[15,4,'Que signifie « HTML » ?',['HyperText Markup Language','High Tech Modern Link','Home Tool Markup Language','Hyper Transfer Mail Link'],0,'Langage de balisage des pages web.'],
+[15,5,'Combien d’octets dans 1 Ko en usage binaire historique ?',['1 000','1 024','1 100','2 048'],1,'1 024 (2¹⁰).'],
+[17,1,'Quel gaz les arbres absorbent-ils pour la photosynthèse ?',['Oxygène','Dioxyde de carbone','Azote','Hélium'],1,'Le CO₂.'],
+[17,2,'Quel est le plus grand océan ?',['Atlantique','Indien','Pacifique','Arctique'],2,'Le Pacifique.'],
+[17,3,'Quelle couche protège la Terre d’une partie des UV ?',['Ionosphère','Couche d’ozone','Troposphère','Magnétosphère'],1,'La couche d’ozone.'],
+[17,4,'Comment appelle-t-on le réchauffement lié aux gaz de l’atmosphère ?',['Effet de serre','Effet Doppler','Marée noire','Érosion'],0,'L’effet de serre.'],
+[19,1,'Combien de mois de l’année comptent au moins 28 jours ?',['1','2','11','12'],3,'Les 12 mois.'],
+[19,2,'Un fermier a 15 moutons, tous sauf 8 meurent. Combien en reste-t-il ?','8','« Tous sauf 8 » : il en reste 8.'],
+[19,3,'Tu as 3 pommes et tu en prends 2. Combien en as-tu ?',['1','2','3','5'],1,'Tu en as pris 2 : tu en as 2.'],
+[19,4,'Un avion s’écrase à la frontière de deux pays. Où enterre-t-on les survivants ?',['Dans le premier pays','Dans le second pays','Nulle part','À la frontière'],2,'On n’enterre pas les survivants.'],
+[19,5,'Un kilo de plumes et un kilo de plomb : qu’est-ce qui diffère ?',['La masse','Le volume','Rien du tout','Le nombre de kilos'],1,'Même masse (1 kg), volumes différents.'],
+[20,2,'Comment s’appelle le livre sacré de l’islam ?',['La Torah','Le Coran','La Bible','Le Veda'],1,'Le Coran.'],
+[20,2,'Combien d’évangiles canoniques compte le Nouveau Testament ?',['2','3','4','12'],2,'Quatre : Matthieu, Marc, Luc et Jean.'],
+[20,3,'Dans quelle ville se trouve la Kaaba ?',['Médine','La Mecque','Jérusalem','Le Caire'],1,'À La Mecque.'],
+[6,3,'Quelle monnaie est utilisée au Togo ?',['Naira','Franc CFA (XOF)','Cedi','Dalasi'],1,'Le franc CFA.'],
+[6,3,'Quel pays est à l’est du Togo ?',['Ghana','Bénin','Burkina Faso','Nigeria'],1,'Le Bénin.'],
+[6,2,'Quel surnom porte l’équipe nationale de football du Togo ?',['Les Lions','Les Éperviers','Les Aigles','Les Panthères'],1,'Les Éperviers.'],
+[6,4,'Dans quelle région se trouve Kpalimé ?',['Maritime','Plateaux','Kara','Savanes'],1,'La région des Plateaux.'],
+[6,4,'Qui fut le premier président du Togo indépendant ?',['Sylvanus Olympio','Nicolas Grunitzky','Gnassingbé Eyadéma','Faure Gnassingbé'],0,'Sylvanus Olympio.'],
+[6,5,'Qui a dirigé le Togo de 1967 à 2005 ?',['Sylvanus Olympio','Nicolas Grunitzky','Gnassingbé Eyadéma','Kofi Annan'],2,'Gnassingbé Eyadéma.'],
+[16,2,'Quel est le plus haut sommet d’Afrique ?',['Mont Kenya','Kilimandjaro','Mont Cameroun','Mont Agou'],1,'Le Kilimandjaro (5 895 m).'],
+[16,3,'Quel empire était dirigé par Mansa Moussa ?',['Empire du Ghana','Empire du Mali','Empire songhaï','Royaume du Bénin'],1,'L’Empire du Mali, au XIVe siècle.'],
+[16,4,'Quelle ville du Mali fut un grand centre du savoir au Moyen Âge ?',['Tombouctou','Abidjan','Lagos','Accra'],0,'Tombouctou.']
+];
+var extra=[];try{extra=JSON.parse(lget(KX)||'[]')}catch(e){extra=[]}
+var BANK=BASE.concat(extra);
+var CAPA='Bénin|Porto-Novo|3;Ghana|Accra|2;Burkina Faso|Ouagadougou|3;Mali|Bamako|3;Niger|Niamey|3;Nigeria|Abuja|3;Sénégal|Dakar|2;Guinée|Conakry|3;Cameroun|Yaoundé|3;Gabon|Libreville|3;RD Congo|Kinshasa|3;Tchad|N’Djamena|4;Maroc|Rabat|2;Algérie|Alger|2;Tunisie|Tunis|2;Égypte|Le Caire|1;Kenya|Nairobi|2;Éthiopie|Addis-Abeba|3;Angola|Luanda|4;Madagascar|Antananarivo|4;Rwanda|Kigali|3;Ouganda|Kampala|3;Zambie|Lusaka|4;Zimbabwe|Harare|4;Mozambique|Maputo|4;Namibie|Windhoek|4;Libye|Tripoli|3;Mauritanie|Nouakchott|4;Liberia|Monrovia|4;Sierra Leone|Freetown|4;Gambie|Banjul|5;Centrafrique|Bangui|5;Botswana|Gaborone|5;Soudan|Khartoum|4',
+CAPW='Allemagne|Berlin|1;Espagne|Madrid|1;Italie|Rome|1;Portugal|Lisbonne|2;Belgique|Bruxelles|2;Suisse|Berne|3;Grèce|Athènes|2;Suède|Stockholm|3;Norvège|Oslo|3;Pologne|Varsovie|3;Russie|Moscou|1;Turquie|Ankara|3;Royaume-Uni|Londres|1;Chine|Pékin|2;Inde|New Delhi|2;Corée du Sud|Séoul|3;Thaïlande|Bangkok|3;Vietnam|Hanoï|3;Pakistan|Islamabad|4;Arabie saoudite|Riyad|4;Iran|Téhéran|4;Irak|Bagdad|3;Argentine|Buenos Aires|2;Chili|Santiago|3;Pérou|Lima|3;Colombie|Bogota|3;Mexique|Mexico|2;Cuba|La Havane|3;États-Unis|Washington|2;Brésil|Brasilia|3;Venezuela|Caracas|4;Nouvelle-Zélande|Wellington|4',
+EN='chat|cat|1;chien|dog|1;maison|house|1;eau|water|1;livre|book|1;soleil|sun|1;pomme|apple|1;école|school|1;ami|friend|1;rouge|red|1;voiture|car|2;fenêtre|window|2;cuisine|kitchen|2;ciel|sky|2;travail|work|2;voyage|journey|3;mensonge|lie|3;bonheur|happiness|3;défi|challenge|3;chemin|path|3;environnement|environment|4;croissance|growth|4;sagesse|wisdom|4;confiance|trust|4;épuisé|exhausted|5;fierté|pride|5;fardeau|burden|5;éclair|lightning|5',
+ES='chat|gato|1;chien|perro|1;maison|casa|1;eau|agua|1;livre|libro|1;soleil|sol|1;merci|gracias|1;bonjour|buenos días|1;ami|amigo|2;fenêtre|ventana|2;cuisine|cocina|2;rue|calle|2;ciel|cielo|2;voyage|viaje|3;mensonge|mentira|3;bonheur|felicidad|3;travail|trabajo|3;cerveau|cerebro|3;défi|desafío|4;croissance|crecimiento|4;confiance|confianza|4;sagesse|sabiduría|4;fierté|orgullo|5;épuisé|agotado|5',
+EL='Hydrogène|H|1;Oxygène|O|1;Carbone|C|1;Hélium|He|1;Azote|N|2;Fer|Fe|2;Calcium|Ca|2;Argent|Ag|2;Cuivre|Cu|2;Chlore|Cl|2;Soufre|S|2;Aluminium|Al|2;Potassium|K|3;Plomb|Pb|3;Zinc|Zn|3;Néon|Ne|3;Magnésium|Mg|3;Phosphore|P|3;Étain|Sn|4;Mercure|Hg|4;Uranium|U|4;Tungstène|W|5';
+var TQ=[];
+function mk(str,cat,fq,ai,fe){var R=str.split(';').map(function(x){return x.split('|')});R.forEach(function(r){var w=shuf(R.map(function(x){return x[ai]}).filter(function(v,i,a){return v!==r[ai]&&a.indexOf(v)===i})).slice(0,3),o=shuf(w.concat([r[ai]]));TQ.push([cat,+r[2],fq(r),o,o.indexOf(r[ai]),fe(r)])})}
+mk(CAPA,16,function(r){return 'Pays : '+r[0]+'. Quelle est sa capitale ?'},1,function(r){return r[1]+' est la capitale de ce pays.'});
+mk(CAPW,5,function(r){return 'Pays : '+r[0]+'. Quelle est sa capitale ?'},1,function(r){return r[1]+' est la capitale de ce pays.'});
+mk(EN,11,function(r){return 'Comment dit-on « '+r[0]+' » en anglais ?'},1,function(r){return r[0]+' = '+r[1]+'.'});
+mk(EN,11,function(r){return 'Que signifie « '+r[1]+' » en français ?'},0,function(r){return r[1]+' = '+r[0]+'.'});
+mk(ES,12,function(r){return 'Comment dit-on « '+r[0]+' » en espagnol ?'},1,function(r){return r[0]+' = '+r[1]+'.'});
+mk(ES,12,function(r){return 'Que signifie « '+r[1]+' » en français ?'},0,function(r){return r[1]+' = '+r[0]+'.'});
+mk(EL,14,function(r){return 'Quel est le symbole chimique de l’élément « '+r[0]+' » ?'},1,function(r){return r[0]+' = '+r[1]+'.'});
+function mq(str,cat,pre,post,ai){mk(str,cat,function(r){return pre+r[0]+post},ai,function(r){return r[0]+' → '+r[ai]+'.'})}
+mq('le début de la Première Guerre mondiale|1914|2;la chute du mur de Berlin|1989|2;le premier pas de l’homme sur la Lune|1969|2;la prise de la Bastille|1789|2;l’arrivée de Christophe Colomb en Amérique|1492|2;l’indépendance du Togo|1960|3;le début de la Seconde Guerre mondiale|1939|3;la fin de la Seconde Guerre mondiale en Europe|1945|3;l’indépendance du Ghana|1957|4;l’élection de Nelson Mandela à la présidence|1994|4;la première Coupe du monde de football|1930|4;la révolution russe d’Octobre|1917|4;le naufrage du Titanic|1912|3;les attentats du 11 septembre|2001|2;l’indépendance de l’Algérie|1962|4;la bataille de Waterloo|1815|3;l’invention de l’imprimerie par Gutenberg (vers)|1450|5;le décret abolissant l’esclavage en France|1848|5',4,'En quelle année : ',' ?',1);
+mq('le téléphone (brevet de 1876)|Alexander Graham Bell|3;l’imprimerie en Europe|Johannes Gutenberg|3;la pénicilline|Alexander Fleming|3;le vaccin contre la rage|Louis Pasteur|3;la théorie de l’évolution par sélection naturelle|Charles Darwin|2;la loi de la gravitation universelle|Isaac Newton|2;la théorie de la relativité|Albert Einstein|2;le premier cinéma public (1895)|Les frères Lumière|3;le World Wide Web|Tim Berners-Lee|4;la dynamite|Alfred Nobel|3;le premier vol motorisé (1903)|Les frères Wright|3;le tableau périodique des éléments (1869)|Dmitri Mendeleïev|4',10,'À qui doit-on ',' ?',1);
+mq('Les Misérables|Victor Hugo|2;Le Petit Prince|Antoine de Saint-Exupéry|2;Roméo et Juliette|William Shakespeare|2;Les Fables|Jean de La Fontaine|2;Germinal|Émile Zola|3;Candide|Voltaire|3;L’Étranger|Albert Camus|3;Cyrano de Bergerac|Edmond Rostand|4;Le Rouge et le Noir|Stendhal|4;Une si longue lettre|Mariama Bâ|4;L’Enfant noir|Camara Laye|4;Les Soleils des indépendances|Ahmadou Kourouma|5;Le monde s’effondre (Things Fall Apart)|Chinua Achebe|5;Une vie de boy|Ferdinand Oyono|5;Le Père Goriot|Honoré de Balzac|4',21,'Qui a écrit « ',' » ?',1);
+mq('1930|Uruguay|4;1950|Uruguay|5;1958|Brésil|4;1966|Angleterre|5;1970|Brésil|4;1978|Argentine|5;1986|Argentine|4;1994|Brésil|3;1998|France|2;2002|Brésil|2;2006|Italie|2;2010|Espagne|2;2014|Allemagne|2;2018|France|1;2022|Argentine|1',22,'Quel pays a gagné la Coupe du monde de football ',' ?',1);
+mq('1930|Uruguay|5;1994|États-Unis|4;1998|France|3;2006|Allemagne|3;2010|Afrique du Sud|2;2014|Brésil|2;2018|Russie|2;2022|Qatar|2',22,'Quel pays a organisé la Coupe du monde de football ',' ?',1);
+mq('2000|Cameroun|5;2002|Cameroun|5;2004|Tunisie|5;2006|Égypte|4;2008|Égypte|4;2010|Égypte|4;2012|Zambie|4;2013|Nigeria|4;2015|Côte d’Ivoire|3;2017|Cameroun|3;2019|Algérie|3;2021 (jouée en 2022)|Sénégal|2;2023 (jouée en 2024)|Côte d’Ivoire|2',22,'Quel pays a remporté la Coupe d’Afrique des nations ',' ?',1);
+mq('1988|Séoul|5;1992|Barcelone|4;1996|Atlanta|4;2000|Sydney|3;2004|Athènes|3;2008|Pékin|2;2012|Londres|2;2016|Rio de Janeiro|2;2024|Paris|1',9,'Quelle ville a accueilli les Jeux olympiques d’été de ',' ?',1);
+mq('le lion|Mammifère|1;l’aigle|Oiseau|1;le requin|Poisson|2;la grenouille|Amphibien|2;le serpent|Reptile|1;le dauphin|Mammifère|2;la baleine|Mammifère|2;le manchot|Oiseau|2;le crocodile|Reptile|2;la tortue|Reptile|2;la chauve-souris|Mammifère|3;la salamandre|Amphibien|3;le papillon|Insecte|1;l’araignée|Arachnide|3;le scorpion|Arachnide|3;l’abeille|Insecte|1;le crapaud|Amphibien|3;l’autruche|Oiseau|2;le kangourou|Mammifère|1;le caméléon|Reptile|2;le thon|Poisson|2;la pieuvre|Mollusque|4;l’escargot|Mollusque|3;le crabe|Crustacé|3;la crevette|Crustacé|3;l’hippocampe|Poisson|4',13,'Dans quelle classe range-t-on ',' ?',1);
+mq('le lion|carnivore|1;la vache|herbivore|1;l’ours brun|omnivore|3;la girafe|herbivore|1;le requin blanc|carnivore|2;le hérisson|insectivore|3;le fourmilier|insectivore|3;le cochon|omnivore|3;le loup|carnivore|1;le koala|herbivore|2;le zèbre|herbivore|1;le crocodile|carnivore|2',13,'Quel est le régime alimentaire de ',' ?',1);
+mq('l’ours polaire|Arctique|2;le manchot empereur|Antarctique|2;le kangourou|Australie|1;le lama|Amérique du Sud|3;le gorille|Afrique|2;le tigre|Asie|2;le lémurien|Madagascar|3;le koala|Australie|2',13,'Où vit naturellement ',' ?',1);
+mq('Togo|Afrique|1;Japon|Asie|1;Canada|Amérique du Nord|1;Brésil|Amérique du Sud|1;Australie|Océanie|1;Italie|Europe|1;Kenya|Afrique|1;Inde|Asie|1;Ghana|Afrique|1;Mexique|Amérique du Nord|2;Argentine|Amérique du Sud|2;Nouvelle-Zélande|Océanie|2;Norvège|Europe|2;Pérou|Amérique du Sud|2;Égypte|Afrique|2;Vietnam|Asie|2;Fidji|Océanie|3;Islande|Europe|3;Mongolie|Asie|3;Bolivie|Amérique du Sud|3;Madagascar|Afrique|3',5,'Sur quel continent se trouve : ',' ?',1);
+mq('🇹🇬|Togo|1;🇧🇯|Bénin|2;🇬🇭|Ghana|2;🇳🇬|Nigeria|2;🇨🇮|Côte d’Ivoire|3;🇸🇳|Sénégal|2;🇲🇱|Mali|3;🇧🇫|Burkina Faso|3;🇨🇲|Cameroun|3;🇲🇦|Maroc|2;🇪🇬|Égypte|2;🇿🇦|Afrique du Sud|3;🇰🇪|Kenya|3;🇪🇹|Éthiopie|4;🇩🇿|Algérie|3;🇹🇳|Tunisie|3',16,'À quel pays africain appartient ce drapeau : ',' ?',1);
+mq('première|Mercure|1;deuxième|Vénus|1;troisième|Terre|1;quatrième|Mars|2;cinquième|Jupiter|2;sixième|Saturne|3;septième|Uranus|3;huitième|Neptune|3',3,'Quelle planète est la ',' à partir du Soleil ?',1);
+mq('le cœur|pomper le sang|1;les poumons|respirer|1;l’estomac|digérer les aliments|2;les yeux|voir|1;les oreilles|entendre|1;les reins|filtrer le sang|3;le cerveau|commander le corps|2',3,'À quoi servent principalement : ',' ?',1);
+mq('la longueur|le mètre|1;la masse|le kilogramme|2;le temps|la seconde|1;l’intensité du courant électrique|l’ampère|4;la tension électrique|le volt|3;la résistance électrique|l’ohm|4;l’énergie|le joule|4;la force|le newton|4;la fréquence|le hertz|4;la puissance|le watt|3;la pression|le pascal|5',18,'Quelle unité du Système international mesure ',' ?',1);
+mq('l’eau|H2O|2;le dioxyde de carbone|CO2|2;le sel de table (chlorure de sodium)|NaCl|3;le dioxygène|O2|2;l’ammoniac|NH3|4;le méthane|CH4|4;l’ozone|O3|4;l’acide chlorhydrique|HCl|5',14,'Quelle est la formule chimique de ',' ?',1);
+mq('acteur|actrice|1;chanteur|chanteuse|1;directeur|directrice|2;boulanger|boulangère|2;roi|reine|1;héros|héroïne|3;tigre|tigresse|3;ami|amie|1;loup|louve|3;empereur|impératrice|4;neveu|nièce|2;prince|princesse|1;jumeau|jumelle|4',7,'Quel est le féminin de « ',' » ?',1);
+mq('cheval|chevaux|1;travail|travaux|2;journal|journaux|1;animal|animaux|1;bijou|bijoux|2;genou|genoux|2;caillou|cailloux|3;œil|yeux|2;hibou|hiboux|3;chou|choux|3;vitrail|vitraux|4;corail|coraux|4;bal|bals|4;festival|festivals|4;pneu|pneus|3;détail|détails|3;monsieur|messieurs|3;madame|mesdames|3;aïeul (ancêtres)|aïeux|5',7,'Quel est le pluriel de « ',' » ?',1);
+mq('grand|petit|1;chaud|froid|1;lent|rapide|1;heureux|triste|1;fort|faible|1;ouvrir|fermer|1;riche|pauvre|1;jour|nuit|1;vrai|faux|1;monter|descendre|1;facile|difficile|2;présent|absent|2;sec|humide|2;courageux|lâche|3;généreux|avare|3;ancien|moderne|3;optimiste|pessimiste|4;éphémère|éternel|5',7,'Quel est le contraire de « ',' » ?',1);
+mq('rapide|vite|1;triste|malheureux|1;beau|joli|1;début|commencement|2;fatigué|épuisé|2;courageux|brave|2;gentil|aimable|2;énorme|gigantesque|3;bizarre|étrange|3;bavard|loquace|4;taciturne|silencieux|4;obstiné|têtu|4;éphémère|fugace|5;perspicace|clairvoyant|5',7,'Quel est un synonyme de « ',' » ?',1);
+
+
+
+/* ===== OUTILS ===== */
+function hs(q){var h=5381,s=String(q[2]);for(var i=0;i<s.length;i++)h=((h<<5)+h+s.charCodeAt(i))|0;return h.toString(36)}
+function shuf(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t}return a}
+function nz(s){return String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9., ]/g,' ').trim().replace(/^(les|le|la|l|un|une|des|du|de|d) /,'').trim().replace(/\s+/g,' ')}
+function chk(v,acc){var n=parseFloat(String(v).replace(',','.').replace(/\s/g,''));return acc.split('|').some(function(a){return nz(a)===nz(v)||(!isNaN(+a)&&n===+a)})}
+var today=function(){return new Date().toISOString().slice(0,10)};
+function pb(v,g){return '<div class="pb"><i style="width:'+Math.min(100,v/g*100)+'%"></i></div>'}
+
+/* ===== ÉTAT & SAUVEGARDE (localStorage) ===== */
+function def(){return{id:'BB-'+Math.random().toString(36).slice(2,8).toUpperCase(),name:'Joueur',age:'',country:'Togo',lvl:1,max:1,sc:{},bestSc:0,recent:[],run:null,last:null,lives:5,stars:0,coins:0,combo:0,best:0,ok:0,ko:0,done:0,logic:0,used:[],it:{f:1,s:1},dbl:0,av:'🧠',own:['🧠'],rw:{},cl:{},gift:'',day:{d:'',lv:0,st:0,cl:{}},snd:1,auto:0}}
+var S=def();
+try{var raw=lget(K);if(raw)S=Object.assign(def(),JSON.parse(raw))}catch(e){S=def()}
+function save(){lset(K,JSON.stringify(S))}
+function rollDay(){var t=today();if(!S.day||S.day.d!==t)S.day={d:t,lv:0,st:0,cl:{}}}
+
+/* ===== GÉNÉRATEUR (questions de calcul/logique avec des nombres différents) ===== */
+function gen0(D){var r=function(n){return Math.floor(Math.random()*n)},m=Math.round(Math.pow(10,.7+D*.45)),t=r(6),q,a,c=8,e,o,x,y,p,b,s,st,k,L,l;
+if(t===0){o=r(3);x=2+r(o===2?Math.ceil(m/3)+8:m);y=2+r(o===2?Math.ceil(m/3)+8:m);a=o===0?x+y:o===1?x-y:x*y;q='Calcule : '+x+' '+'+−×'.charAt(o)+' '+y;e=x+' '+'+−×'.charAt(o)+' '+y+' = '+a+'.'}
+else if(t===1){p=[5,10,15,20,25,30,40,50,75][r(9)];b=(1+r(m))*20;a=p*b/100;q='Combien font '+p+' % de '+b+' ?';e=b+' × '+p+' ÷ 100 = '+a+'.'}
+else if(t===2){x=1+r(m);y=2+r(8);b=1+r(m);a=x;q='Résous : '+y+'x + '+b+' = '+(y*x+b)+'. Que vaut x ?';e=y+'x = '+(y*x)+', donc x = '+x+'.'}
+else if(t===3){c=1;s=2+r(9);st=2+r(Math.ceil(m/2)+3);a=s+4*st;q='Suite : '+s+', '+(s+st)+', '+(s+2*st)+', '+(s+3*st)+', … ?';e='On ajoute '+st+' à chaque fois.'}
+else if(t===4){c=1;s=1+r(4);k=2+r(2);a=s*Math.pow(k,4);q='Suite : '+s+', '+s*k+', '+s*k*k+', '+s*k*k*k+', … ?';e='On multiplie par '+k+' à chaque fois.'}
+else{L=2+r(Math.ceil(m/3)+5);l=2+r(L);if(r(2)){a=L*l;q='Un rectangle mesure '+L+' cm sur '+l+' cm. Quelle est son aire en cm² ?';e=L+' × '+l+' = '+a+'.'}else{a=2*(L+l);q='Un rectangle mesure '+L+' cm sur '+l+' cm. Quel est son périmètre en cm ?';e='2 × ('+L+' + '+l+') = '+a+'.'}}
+var d=Math.min(5,Math.max(1,Math.round(D))),res;
+if(D<2.2){var set=[a];while(set.length<4){var z=a+(r(9)-4)*(r(3)+1);if(set.indexOf(z)<0)set.push(z)}var ops=shuf(set).map(String);res=[c,d,q,ops,ops.indexOf(String(a)),e,1]}
+else res=[c,d,q,String(a),0,e,1];
+return res}
+
+function fin(c,q,a,e,D,opts){var r=function(n){return Math.floor(Math.random()*n)},d=Math.min(5,Math.max(1,Math.round(D)));
+if(opts)return [c,d,q,opts,0,e,1];
+if(D<2.2){var set=[a];while(set.length<4){var z=a+(r(9)-4)*(r(3)+1);if(z>=0&&set.indexOf(z)<0)set.push(z)}var o=shuf(set).map(String);return [c,d,q,o,o.indexOf(String(a)),e,1]}
+return [c,d,q,String(a),0,e,1]}
+function gen1(D){var r=function(n){return Math.floor(Math.random()*n)},m=Math.round(Math.pow(10,.7+D*.4)),t=r(9),a,q,e,c=8,x,y,z,o;
+if(t===0){x=2+r(Math.ceil(m/2)+10);a=x*x;q='Combien font '+x+' × '+x+' ?';e=x+'² = '+a+'.'}
+else if(t===1){x=2+r(Math.ceil(m/2)+10);a=x;q='Quelle est la racine carrée de '+x*x+' ?';e=x+' × '+x+' = '+x*x+'.'}
+else if(t===2){var U=[['km','m',1000],['h','minutes',60],['kg','g',1000],['L','mL',1000],['m','cm',100],['jours','heures',24]],u=U[r(6)];x=1+r(Math.ceil(m/3)+8);a=x*u[2];q='Convertis : '+x+' '+u[0]+' = … '+u[1];e='1 '+u[0]+' = '+u[2]+' '+u[1]+'.'}
+else if(t===3){var f=[[1,2],[1,4],[3,4],[2,3],[1,3],[3,5],[1,5]][r(7)];y=(1+r(Math.ceil(m/6)+3))*f[1];a=y/f[1]*f[0];q='Combien font '+f[0]+'/'+f[1]+' de '+y+' ?';e=y+' ÷ '+f[1]+' × '+f[0]+' = '+a+'.'}
+else if(t===4){x=10+r(50);y=2+r(8);a=x*y;q='Un cycliste roule à '+x+' km/h pendant '+y+' h. Quelle distance parcourt-il (en km) ?';e=x+' × '+y+' = '+a+' km.'}
+else if(t===5){x=8+r(60);y=2+r(30);a=x+y;q='Awa a '+x+' ans. Dans '+y+' ans, quel âge aura-t-elle ?';e=x+' + '+y+' = '+a+'.'}
+else if(t===6){x=2+r(40);y=2+r(40);z=1+r(40);z+=(3-((x+y+z)%3))%3;a=(x+y+z)/3;q='Quelle est la moyenne de '+x+', '+y+' et '+z+' ?';e='('+x+' + '+y+' + '+z+') ÷ 3 = '+a+'.'}
+else if(t===7){c=1;var k=3+r(7);a=k*(2+r(12));var ds=[];for(var j=1;j<k;j++){ds.push(a+j,a-j)}ds=shuf(ds).slice(0,3);o=shuf([a].concat(ds)).map(String);return fin(c,'Lequel de ces nombres est un multiple de '+k+' ?',0,a+' = '+k+' × '+(a/k)+'.',Math.max(D,2),o).slice(0,4).concat([o.indexOf(String(a)),a+' = '+k+' × '+(a/k)+'.',1])}
+else{c=1;var P=[11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97],C=[15,21,27,33,35,39,45,49,51,55,57,63,65,69,77,81,85,87,91,93,95];a=P[r(21)];o=shuf([a].concat(shuf(C).slice(0,3))).map(String);return [c,Math.max(3,Math.min(5,Math.round(D))),'Lequel de ces nombres est premier ?',o,o.indexOf(String(a)),a+' n’a que deux diviseurs : 1 et lui-même.',1]}
+return fin(c,q,a,e,D)}
+var VR='chant;parl;aim;jou;dans;regard;écout;travaill;march;port;donn;trouv;pens;montr;lav;saut;cuisin;rêv;gard;dessin'.split(';'),V2='fin;chois;grand;réuss;rempl;bât;obé'.split(';'),
+IR={être:'suis,es,est,sommes,êtes,sont',avoir:'ai,as,a,avons,avez,ont',aller:'vais,vas,va,allons,allez,vont',faire:'fais,fais,fait,faisons,faites,font',dire:'dis,dis,dit,disons,dites,disent',prendre:'prends,prends,prend,prenons,prenez,prennent',pouvoir:'peux,peux,peut,pouvons,pouvez,peuvent',vouloir:'veux,veux,veut,voulons,voulez,veulent',venir:'viens,viens,vient,venons,venez,viennent',voir:'vois,vois,voit,voyons,voyez,voient',savoir:'sais,sais,sait,savons,savez,savent'};
+function genC(D){var r=function(n){return Math.floor(Math.random()*n)},PN=['je','tu','il','nous','vous','ils'],p=r(6),F,inf,tn='au présent',d;
+if(D>=3.3&&r(2)){var ks=Object.keys(IR);inf=ks[r(ks.length)];F=IR[inf].split(',');d=4}
+else{var g2=D>=2.5&&r(3)===0,tt=D<1.8?0:D<3?r(2):r(3),st=g2?V2[r(V2.length)]:VR[r(VR.length)];inf=st+(g2?'ir':'er');d=tt?3:g2?3:1;tn=['au présent','à l’imparfait','au futur simple'][tt];
+var en=g2?[['is','is','it','issons','issez','issent'],['issais','issais','issait','issions','issiez','issaient'],['irai','iras','ira','irons','irez','iront']][tt]:[['e','es','e','ons','ez','ent'],['ais','ais','ait','ions','iez','aient'],['erai','eras','era','erons','erez','eront']][tt];
+F=en.map(function(x){return st+x})}
+var a=F[p],pr=PN[p];if(p===0&&/^[aeiouéèêh]/.test(a))pr='j’';
+var q='Conjugue « '+inf+' » '+tn+' : '+pr+' … ?',e=tn.charAt(0).toUpperCase()+tn.slice(1)+', '+PN[p]+' → '+a+'.';
+if(D<3.2){var w=shuf(F.filter(function(v,i,x){return v!==a&&x.indexOf(v)===i})).slice(0,3),o=shuf(w.concat([a]));return [7,Math.min(5,Math.max(1,Math.round(D))),q,o,o.indexOf(a),e,1]}
+return [7,Math.min(5,Math.max(1,Math.round(D))),q,a,0,e,1]}
+function gen(D){var k=Math.random();return k<.35?gen0(D):k<.7?gen1(D):genC(D)}
+function pick(lv){var D=1+4*(lv-1)/(MAXL-1),L=BANK.filter(function(x){return S.used.indexOf(hs(x))<0});
+if(L.length&&Math.random()<.5){L.sort(function(a,b){return Math.abs(a[1]-D)-Math.abs(b[1]-D)+(Math.random()-.5)*1.5});return L[0]}
+for(var i=0;i<40;i++){var g=gen(D);if(S.used.indexOf(hs(g))<0)return g}return gen(D)}
+
+/* ===== SONS (WebAudio, aucun fichier externe) & VOIX (SpeechSynthesis) ===== */
+var ac,SND={ok:[[660,0,.12],[880,.1,.18]],ko:[[220,0,.2],[160,.18,.3]],win:[[523,0,.15],[659,.15,.15],[784,.3,.15],[1047,.45,.3]],rw:[[880,0,.1],[1175,.1,.1],[1568,.2,.25]]};
+function beep(seq){if(!S.snd)return;try{ac=ac||new(window.AudioContext||window.webkitAudioContext)();seq.forEach(function(n){var o=ac.createOscillator(),g=ac.createGain(),t=ac.currentTime+n[1];o.type='triangle';o.frequency.value=n[0];g.gain.setValueAtTime(.15,t);g.gain.exponentialRampToValueAtTime(.001,t+n[2]);o.connect(g);g.connect(ac.destination);o.start(t);o.stop(t+n[2]+.02)})}catch(e){}}
+function say(){if(!('speechSynthesis' in window)||!window.SpeechSynthesisUtterance){toast('La lecture vocale n’est pas prise en charge par ce navigateur.');return}
+try{speechSynthesis.cancel();var q=cur.q,txt=q[2];if(cur.o)txt+='. '+cur.o.map(function(i,k){return 'ABCDE'.charAt(k)+', '+q[3][i]}).join('. ');var u=new SpeechSynthesisUtterance(txt);u.lang='fr-FR';u.rate=.95;var v=speechSynthesis.getVoices().filter(function(v){return v.lang&&v.lang.indexOf('fr')===0})[0];if(v)u.voice=v;speechSynthesis.speak(u)}catch(e){toast('Lecture vocale indisponible.')}}
+
+/* ===== EFFETS ===== */
+function toast(t){var d=document.createElement('div');d.className='ts';d.textContent=t;document.body.appendChild(d);setTimeout(function(){d.remove()},2400)}
+function fx(t){var d=document.createElement('div');d.className='fx';d.textContent=t;document.body.appendChild(d);setTimeout(function(){d.remove()},1450)}
+function conf(n){for(var i=0;i<n;i++){var e=document.createElement('i');e.className='cf';e.style.cssText='left:'+Math.random()*100+'vw;background:'+['#e10b1f','#fff','#ff5a5f'][i%3]+';animation-delay:'+Math.random()*.3+'s;--x:'+(Math.random()*120-60)+'px';document.body.appendChild(e);setTimeout(function(el){el.remove()},1900,e)}}
+var Q=[];
+function modal(e,t,x,a,l){var o=$('#md');if(o)o.remove();var d=document.createElement('div');d.id='md';d.className='md';d.innerHTML='<div class="mb"><div class="e">'+e+'</div><h2>'+esc(t)+'</h2><p class="mu">'+esc(x)+'</p>'+(a?'<button class="btn" data-a="'+a+'">'+esc(l)+'</button>':'')+'<button class="btn w" data-a="close">'+(a?'Fermer':'Super !')+'</button></div>';document.body.appendChild(d)}
+function nextQ(){var r=Q.shift();if(!r)return;modal('🏅','Récompense obtenue !',r[1]+' '+r[2]+' — +'+r[5]+' pièces'+(r[6]?' et +'+r[6]+' vie(s)':''));conf(60);beep(SND.rw)}
+
+/* ===== RÉCOMPENSES, DÉFIS, BOUTIQUE (données) ===== */
+var RW=[['b3','🔥','Combo x3','best',3,15,0],['b5','⚡','Combo x5','best',5,30,0],['b10','💥','Combo x10','best',10,80,1],['b20','🌟','Série parfaite x20','best',20,200,2],
+['l5','🚩','5 LV validés','done',5,30,1],['l10','🏁','10 LV validés','done',10,60,1],['l25','🥇','25 LV validés','done',25,150,2],['l50','🏆','50 LV validés','done',50,400,3],['l100','👑','Parcours complet : LV100','done',100,2000,10],
+['s100','⭐','100 étoiles','stars',100,40,0],['s1000','🌠','1 000 étoiles','stars',1000,300,2],['o100','🧠','100 bonnes réponses','ok',100,100,1]];
+var CH=[['c5','🔥','Série de 5','Enchaîne 5 bonnes réponses',5,function(s){return s.best},30,0],
+['c10','💥','Série de 10','10 bonnes réponses d’affilée, sans erreur',10,function(s){return s.best},80,1],
+['n10','🎯','10 niveaux','Valide 10 LV (15/20 minimum)',10,function(s){return s.done},40,0],
+['lg','🧩','Défi de logique','10 bonnes réponses en logique, énigmes ou maths',10,function(s){return s.logic},60,1],
+['st','⭐','200 étoiles','Cumule 200 étoiles',200,function(s){return s.stars},100,1],
+['d5','🌞','Défi du jour','Valide 5 parties aujourd’hui',5,function(s){return s.day.lv},25,1,1]];
+var SH=[['v1','❤️','1 vie',30],['v3','❤️❤️❤️','Pack de 3 vies',80],['f','✂️','Aide 50/50',25],['p','⏭️','Passer une question',40],['x2','✨','Étoiles ×2 (10 bonnes réponses)',60]];
+var AV=[['🦁',100],['🚀',150],['👑',400]];
+var FAKE=[['Kossi','Togo',1840],['Aya','Côte d’Ivoire',1520],['Moussa','Mali',1210],['Fatou','Sénégal',980],['Yao','Togo',760],['Chidi','Nigeria',640],['Léa','France',470],['Amina','Maroc',350],['Kofi','Ghana',210],['Ibrahim','Niger',90]];
+var COUNTRIES=['Togo','Bénin','Ghana','Burkina Faso','Côte d’Ivoire','Nigeria','Sénégal','Cameroun','Mali','Niger','Maroc','France','Belgique','Canada','Autre'];
+/* Futur backend gratuit : renseigner ONLINE.url (ex. Supabase/Firebase). POST {id,name,country,stars} sur /score. Vide = classement local. */
+var ONLINE={url:''};
+function sync(){if(!ONLINE.url)return;try{fetch(ONLINE.url+'/score',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:S.id,name:S.name,country:S.country,stars:S.stars})}).catch(function(){})}catch(e){}}
+function rwCheck(){RW.forEach(function(r){if(!S.rw[r[0]]&&S[r[3]]>=r[4]){S.rw[r[0]]=1;S.coins+=r[5];S.lives+=r[6];Q.push(r)}});if(Q.length&&!$('#md'))setTimeout(nextQ,650)}
+function isCl(c){return (c[8]?S.day.cl:S.cl)[c[0]]}
+
+/* ===== PARTIE : 20 questions, 15 bonnes réponses pour valider ===== */
+var NQ=20,PASS=15,cur=null,done=false,scr='home';
+function lab(l){return 'Niveau '+Math.ceil(l/10)+' — LV'+l}
+function build(lv,n){n=n||NQ;var D=1+4*(lv-1)/(MAXL-1),P=BANK.concat(TQ).filter(function(x){return S.recent.indexOf(hs(x))<0}),run=[],cnt={},prev=-1,i;
+if(P.length<60){P=BANK.concat(TQ);S.low=1}else S.low=0;
+for(i=0;i<12;i++)P.push(gen(D));
+while(run.length<n&&P.length){var bi=0,bs=1e9;for(i=0;i<P.length;i++){var x=P[i],sc=Math.abs(x[1]-D)*1.5+Math.random()*1.8+(x[0]===prev?6:0)+(cnt[x[0]]||0)*.9;if(sc<bs){bs=sc;bi=i}}
+var c=P.splice(bi,1)[0];if(run.some(function(y){return hs(y)===hs(c)}))continue;run.push(c);cnt[c[0]]=(cnt[c[0]]||0)+1;prev=c[0]}
+while(run.length<n)run.push(gen(D));
+run.forEach(function(q){S.recent.push(hs(q))});S.recent=S.recent.slice(-150);return run}
+function startRun(lv,fresh){var r=S.run;
+if(r&&r.lv===lv&&!fresh){if(r.pend){r.i++;r.pend=0}if(r.i>=NQ){finish();return}}
+else{if(S.lives<1){modal('💔','Plus de vies','Récupère des vies avec le cadeau du jour (Récompenses), les défis ou la Boutique.','go:rewards','Récompenses');return}
+S.run={lv:lv,qs:build(lv),i:0,ok:0,ko:0,cb:0,pend:0}}
+loadQ();save();nav('game');if(S.auto)setTimeout(say,350)}
+function loadQ(){var q=S.run.qs[S.run.i];cur={q:q,o:Array.isArray(q[3])?shuf(q[3].map(function(_,i){return i})):null,hid:[],sel:null};done=false}
+function ans(){if(done||!cur)return;var q=cur.q,r=S.run,mc=!!cur.o,v;
+if(mc){if(cur.sel===null)return;v=cur.sel}else{v=$('#in').value;if(!String(v).trim()){toast('Écris une réponse.');return}}
+done=true;var good=mc?cur.o[v]===q[4]:chk(v,q[3]),fb;r.pend=1;
+if(good){r.ok++;r.cb++;S.best=Math.max(S.best,r.cb);S.ok++;if(q[0]===1||q[0]===2||q[0]===8)S.logic++;
+var g=q[1]*(S.dbl>0?2:1);if(S.dbl>0)S.dbl--;S.stars+=g;S.coins+=1;var c=r.cb;
+if([3,5,10,15,20].indexOf(c)>=0){S.stars+=c;S.coins+=c;g+=c}
+var msg=c>=20?'Série parfaite !':c>=10?'Incroyable !':c>=5?'Combo x'+c+' !':c>=3?'Série en cours !':c===2?'Excellent !':'';
+if(msg)fx(msg);if(c>=3)conf(c>=10?90:35);beep(SND.ok);
+fb='<h2 class="ok">✅ Bonne réponse ! +'+g+' ⭐</h2><p>'+esc(q[5])+'</p>'}
+else{r.ko++;r.cb=0;S.ko++;beep(SND.ko);try{navigator.vibrate&&navigator.vibrate(120)}catch(e){}
+fb='<h2 class="ko">❌ Mauvaise réponse</h2><p>Bonne réponse : <b>'+esc(mc?q[3][q[4]]:q[3].split('|')[0])+'</b></p><p>'+esc(q[5])+'</p>'}
+document.querySelectorAll('.op').forEach(function(b,k){b.disabled=true;if(cur.o[k]===q[4])b.classList.add('g');else if(k===v)b.classList.add('b')});
+var inp=$('#in');if(inp){inp.disabled=true;inp.style.borderColor=good?'#fff':'#e10b1f'}
+$('#cg').textContent=r.ok;$('#cm').textContent=r.ko;$('#fb').innerHTML=fb;
+var vb=$('#vb');vb.disabled=false;vb.setAttribute('data-a','next');vb.textContent=r.i+1>=NQ?'Voir mon résultat ▶':'Question suivante ▶';
+save();rwCheck()}
+function nxt(){var r=S.run;if(!r||!done)return;r.pend=0;r.i++;if(r.i>=NQ){finish();return}loadQ();save();render()}
+function finish(){var r=S.run,pass=r.ok>=PASS,first=false;S.run=null;rollDay();
+if(pass){first=!(r.lv in S.sc);S.sc[r.lv]=Math.max(S.sc[r.lv]||0,r.ok);S.bestSc=Math.max(S.bestSc,r.ok);S.done=Object.keys(S.sc).length;S.day.lv++;
+if(r.lv>=S.max&&S.max<MAXL)S.max=r.lv+1;
+if(first){S.stars+=10;S.coins+=20;if(r.lv%10===0)S.lives++}beep(SND.win);conf(110)}
+else{S.lives=Math.max(0,S.lives-1);beep(SND.ko)}
+S.last={lv:r.lv,ok:r.ok,ko:r.ko,pass:pass,first:first};save();sync();nav('result');rwCheck()}
+function hdr(){return '<span class="pill">❤️ '+S.lives+'</span><span class="pill">🔥 '+S.run.cb+'</span><span class="pill">⭐ '+S.stars+'</span>'}
+
+/* ===== ÉCRANS ===== */
+var LOGO='<img src="data:image/jpeg;base64,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" alt="Brain Battle" style="width:46px;height:46px;border-radius:12px">';
+function top(){return '<div class="top">'+LOGO+'<b>BRAIN <span>BATTLE</span></b><button class="ib" style="padding:4px 9px" data-a="go:rank">🏆</button><span class="pill">❤️ '+S.lives+'</span><span class="pill">⭐ '+S.stars+'</span></div>'}
+function giftOk(){return S.gift!==today()}
+var V={
+home:function(){var r=S.run,cl=Math.min(S.max,MAXL);
+return '<div class="sk">'+top()+'<button class="btn" style="margin-top:0" data-a="play">'+(r?'▶ REPRENDRE LA PARTIE — LV'+r.lv+' ('+(r.i+1)+'/20)':'▶ JOUER — '+lab(cl))+'</button><div class="mu" style="margin:6px 2px 0">'+esc(S.name)+' • '+S.done+'/100 LV validés • meilleur score '+S.bestSc+'/20</div></div>'+(noLS?'<div class="card ko">⚠️ Sauvegarde indisponible sur ce navigateur : la progression sera perdue à la fermeture.</div>':'')+V.zig()},
+zig:function(){var H=MAXL*104+40,xs=[18,50,82,50],cy=function(i){return H-70-(i-1)*104},px=function(i){return xs[(i-1)%4]},d1='',d2='',h='',i;
+for(i=1;i<MAXL;i++){var m=(cy(i)+cy(i+1))/2,sg=' C'+px(i)+' '+m+' '+px(i+1)+' '+m+' '+px(i+1)+' '+cy(i+1);
+if(i<S.max)d1+=(d1?'':'M'+px(1)+' '+cy(1))+sg;else d2+=(d2?'':'M'+px(i)+' '+cy(i))+sg}
+for(i=1;i<=MAXL;i++){var st=(i in S.sc)?'dn':(i===S.max?'cu':''),lock=i>S.max;
+h+='<button class="nd '+st+'" style="left:'+px(i)+'%;top:'+(cy(i)-32)+'px" data-a="lvl:'+i+'"'+(lock?' disabled':'')+'>LV'+i+'<small>'+(lock?'🔒':st==='dn'?'✓ '+S.sc[i]+'/20':'▶ Jouer')+'</small></button>';
+if(i%10===1)h+='<div class="rb" style="top:'+(cy(i)-14)+'px;'+(px(i)<50?'right':'left')+':8px">Niveau '+Math.ceil(i/10)+'</div>'}
+var st2='fill="none" stroke-linecap="round" vector-effect="non-scaling-stroke"';
+return '<div class="zz" style="height:'+H+'px"><svg viewBox="0 0 100 '+H+'" preserveAspectRatio="none" style="height:'+H+'px"><path d="'+d2+'" '+st2+' stroke="#555" stroke-width="5" stroke-dasharray="12 10"/><path d="'+d1+'" '+st2+' stroke="#fff" stroke-width="6"/></svg>'+h+'</div>'},
+game:function(){var q=cur.q,r=S.run,mc=!!cur.o,h='<div class="row sp" style="margin-bottom:10px"><button class="ib" data-a="go:home">←</button><div class="row">'+hdr()+'</div></div><div class="card"><small>'+lab(r.lv)+'</small><div class="row sp"><b>QUESTION '+(r.i+1)+'/'+NQ+'</b><small>'+CATS[q[0]]+(q[6]?' • 🔧':'')+' • '+'★'.repeat(q[1])+'</small></div>'+pb(r.i,NQ)+
+'<div class="row sp"><span>Bonnes réponses : <b id="cg" class="ok">'+r.ok+'</b></span><span>Mauvaises : <b id="cm" class="ko">'+r.ko+'</b></span></div><div class="q">'+esc(q[2])+'</div>';
+if(mc)h+=cur.o.map(function(oi,k){return '<button class="op'+(cur.sel===k?' sl':'')+'" data-a="sel:'+k+'"'+(cur.hid.indexOf(k)>=0?' disabled style="visibility:hidden"':'')+'>'+'ABCDE'.charAt(k)+'. '+esc(q[3][oi])+'</button>'}).join('');
+else h+='<input id="in" class="inp" type="text" autocomplete="off" placeholder="Ta réponse">';
+h+='<button class="btn" id="vb" data-a="ans"'+(mc&&cur.sel===null?' disabled':'')+'>Valider</button><div class="row" style="margin-top:12px"><button class="sm" data-a="say">🔊 Écouter</button>'+(mc?'<button class="sm" data-a="fifty">✂️ 50/50 ('+S.it.f+')</button>':'')+'<button class="sm" data-a="skip">⏭️ Passer ('+S.it.s+')</button></div><div id="fb" style="margin-top:12px"></div></div>';return h},
+result:function(){var l=S.last;if(!l)return V.home();return top()+'<div class="card" style="text-align:center"><div style="font-size:56px">'+(l.pass?'🏆':'💪')+'</div><h2>'+lab(l.lv)+'</h2><div style="font-size:44px;font-weight:900">'+l.ok+' / 20</div><p class="mu">Bonnes réponses : '+l.ok+' • Mauvaises : '+l.ko+' • '+Math.round(l.ok/20*100)+' %</p><h2 class="'+(l.pass?'ok':'ko')+'">'+(l.pass?'✅ LV validé !':'❌ Non validé (15/20 minimum)')+'</h2>'+(l.pass&&l.first?'<p>🎁 +10 ⭐ et +20 pièces</p>':'')+(l.pass?'':'<p class="mu">−1 vie. Tu peux recommencer.</p>')+(l.pass&&l.lv<MAXL?'<button class="btn" data-a="lvl:'+(l.lv+1)+'">LV'+(l.lv+1)+' suivant ▶</button>':'')+(l.pass&&l.lv>=MAXL?'<p>👑 Tu as terminé les 100 LV !</p>':'')+'<button class="btn '+(l.pass?'w':'')+'" data-a="redo:'+l.lv+'">🔄 Recommencer ce LV</button><button class="btn w" data-a="go:home">🗺️ Voir la carte</button></div>'},
+challenges:function(){rollDay();return top()+'<h2>🎯 Défis</h2>'+CH.map(function(c){var v=Math.min(c[5](S),c[4]),fin=isCl(c),rdy=v>=c[4]&&!fin;
+return '<div class="card"><div class="row sp"><b>'+c[1]+' '+c[2]+'</b><small>'+(fin?'✅ Terminé':rdy?'À récupérer':'En cours')+'</small></div><p class="mu">'+c[3]+(c[8]?' (se renouvelle chaque jour)':'')+'<br>Récompense : '+c[6]+' pièces'+(c[7]?' + '+c[7]+' vie':'')+'</p>'+pb(v,c[4])+'<small>'+v+' / '+c[4]+'</small>'+(rdy?'<button class="btn" data-a="claim:'+c[0]+'">🎁 Récupérer</button>':'')+'</div>'}).join('')},
+rewards:function(){var n=Object.keys(S.rw).length;return top()+'<h2>🎁 Récompenses</h2><div class="card"><b>Bonus disponible</b><p class="mu">Cadeau du jour : +3 vies et +20 pièces</p><button class="btn" data-a="gift"'+(giftOk()?'':' disabled')+'>'+(giftOk()?'🎁 Ouvrir le cadeau':'Déjà ouvert aujourd’hui')+'</button></div>'+
+'<div class="card"><b>Obtenues : '+n+' / '+RW.length+'</b>'+pb(n,RW.length)+'</div>'+RW.map(function(r){var got=S.rw[r[0]],v=Math.min(S[r[3]],r[4]);return '<div class="card" style="'+(got?'':'opacity:.7')+'"><div class="row sp"><b>'+r[1]+' '+r[2]+'</b><small>'+(got?'✅ Obtenue':'🔒 À débloquer')+'</small></div><small>+'+r[5]+' pièces'+(r[6]?' +'+r[6]+' vie(s)':'')+'</small>'+(got?'':pb(v,r[4])+'<small>'+v+' / '+r[4]+'</small>')+'</div>'}).join('')},
+shop:function(){return top()+'<h2>🛍️ Boutique</h2><div class="card row sp"><b>🪙 Pièces</b><b style="font-size:22px">'+S.coins+'</b></div><p class="mu">Les pièces se gagnent en jouant. Les étoiles ne sont jamais dépensées.</p>'+
+SH.map(function(s){return '<div class="card row sp"><div><b>'+s[1]+' '+s[2]+'</b></div><button class="sm" style="flex:0 0 auto;padding:10px 14px" data-a="buy:'+s[0]+'">🪙 '+s[3]+'</button></div>'}).join('')+
+'<div class="card"><b>Avatars</b><div class="row" style="margin-top:10px;flex-wrap:wrap"><button class="sm" data-a="av:🧠">🧠 '+(S.av==='🧠'?'✔':'Utiliser')+'</button>'+AV.map(function(a){var o=S.own.indexOf(a[0])>=0;return '<button class="sm" data-a="'+(o?'av:':'buyav:')+a[0]+'">'+a[0]+' '+(o?(S.av===a[0]?'✔':'Utiliser'):'🪙'+a[1])+'</button>'}).join('')+'</div></div>'},
+settings:function(){return top()+'<h2>⚙️ Paramètres</h2><div class="card"><b>Profil</b><br><small>Identifiant (automatique) : '+esc(S.id)+'</small><br><label>Nom</label><input id="pn" class="inp" maxlength="16" value="'+esc(S.name)+'"><label>Âge (facultatif)</label><input id="pa" class="inp" type="number" min="5" max="120" value="'+esc(S.age)+'"><label>Pays</label><select id="pc">'+COUNTRIES.map(function(c){return '<option'+(c===S.country?' selected':'')+'>'+c+'</option>'}).join('')+'</select><button class="btn" data-a="save">Enregistrer le profil</button></div>'+
+'<div class="card"><b>Préférences</b><div class="row" style="margin-top:10px"><button class="sm" data-a="tg:snd">🔔 Sons : '+(S.snd?'ON':'OFF')+'</button><button class="sm" data-a="tg:auto">🔊 Lecture auto : '+(S.auto?'ON':'OFF')+'</button></div><small>La lecture vocale (bouton Écouter) est indépendante des sons.</small></div>'+
+'<div class="card"><b>Statistiques</b><p class="mu">Bonnes réponses : '+S.ok+' • Erreurs : '+S.ko+' • Niveaux réussis : '+S.done+'</p></div>'+
+'<div class="card"><button class="btn" data-a="reset" style="background:#333;box-shadow:none">🗑️ Réinitialiser la progression</button></div>'},
+rank:function(){var all=FAKE.map(function(f){return{n:f[0],c:f[1],s:f[2],me:0}});all.push({n:S.name,c:S.country,s:S.stars,me:1});all.sort(function(a,b){return b.s-a.s});
+return top()+'<div class="row"><button class="ib" data-a="go:home">←</button><h2 style="margin:0">🏆 Classement</h2></div><div class="card ko" style="margin-top:10px">⚠️ Classement LOCAL : les autres joueurs sont fictifs (simulés). Aucune donnée en ligne n’est synchronisée.</div><div class="card">'+
+all.map(function(p,i){return '<div class="row sp" style="padding:8px 0;border-bottom:1px solid #2a2a2a;'+(p.me?'color:#ff5a5f;font-weight:800':'')+'"><span style="width:28px">'+(i+1)+'</span><span style="flex:1">'+esc(p.n)+'<br><small>'+esc(p.c)+'</small></span><span>⭐ '+p.s+'</span></div>'}).join('')+'</div>'}
+};
+var NAV=[['home','🏠','Accueil'],['challenges','🎯','Défis'],['rewards','🎁','Récomp.'],['shop','🛍️','Boutique'],['settings','⚙️','Réglages']];
+function nav(s){scr=s;render()}
+function render(){try{$('#v').innerHTML=V[scr]();$('#nav').style.display=scr==='game'?'none':'grid';$('#nav').innerHTML=NAV.map(function(n){return '<button data-a="go:'+n[0]+'" class="'+(n[0]===scr?'on':'')+'"><i>'+n[1]+'</i>'+n[2]+'</button>'}).join('');var cu=scr==='home'&&$('.cu');if(cu)cu.scrollIntoView({block:'center'});else window.scrollTo(0,0)}catch(e){$('#v').innerHTML='<div class="card ko">Erreur : '+esc(e.message)+'</div><button class="btn" data-a="go:home">Retour à l’accueil</button>'}}
+
+/* ===== ACTIONS ===== */
+function buy(id){var s=SH.filter(function(x){return x[0]===id})[0];if(!s)return;if(S.coins<s[3]){toast('Pas assez de pièces.');return}S.coins-=s[3];
+if(id==='v1')S.lives+=1;else if(id==='v3')S.lives+=3;else if(id==='f')S.it.f++;else if(id==='p')S.it.s++;else if(id==='x2')S.dbl+=10;save();beep(SND.rw);toast('Achat effectué : '+s[2]);render()}
+function act(a,p){
+switch(a){
+case 'go':nav(p);break;case 'play':startRun(S.max);break;
+case 'lvl':p=+p;if(p>S.max){toast('Niveau verrouillé 🔒');break}startRun(p);break;
+case 'redo':startRun(+p,true);break;
+case 'sel':if(done)break;cur.sel=+p;document.querySelectorAll('.op').forEach(function(b,k){b.classList.toggle('sl',k===cur.sel)});$('#vb').disabled=false;break;
+case 'ans':ans();break;case 'say':say();break;case 'next':nxt();break;
+case 'fifty':if(done||!cur.o)break;if(S.it.f<1){toast('Aucune aide 50/50 restante.');break}var w=[];cur.o.forEach(function(oi,k){if(oi!==cur.q[4]&&cur.hid.indexOf(k)<0)w.push(k)});if(w.length<2)break;shuf(w).slice(0,2).forEach(function(k){cur.hid.push(k)});if(cur.hid.indexOf(cur.sel)>=0)cur.sel=null;S.it.f--;save();render();break;
+case 'skip':if(done)break;if(S.it.s<1){toast('Aucune aide « Passer » restante.');break}S.it.s--;S.run.qs[S.run.i]=build(S.run.lv,1)[0];loadQ();save();render();break;
+case 'claim':var c=CH.filter(function(x){return x[0]===p})[0],st=c[8]?S.day.cl:S.cl;if(st[p]||c[5](S)<c[4]){toast('Objectif non atteint.');break}st[p]=1;S.coins+=c[6];S.lives+=c[7];save();beep(SND.win);conf(60);toast('🎁 +'+c[6]+' pièces'+(c[7]?' et +'+c[7]+' vie':''));render();break;
+case 'gift':if(!giftOk())break;S.gift=today();S.lives+=3;S.coins+=20;save();beep(SND.rw);conf(70);modal('🎁','Cadeau du jour','+3 vies et +20 pièces !');render();break;
+case 'buy':buy(p);break;
+case 'buyav':var av=AV.filter(function(x){return x[0]===p})[0];if(S.coins<av[1]){toast('Pas assez de pièces.');break}S.coins-=av[1];S.own.push(p);S.av=p;save();beep(SND.rw);render();break;
+case 'av':S.av=p;save();render();break;
+case 'tg':S[p]=S[p]?0:1;save();render();break;
+case 'save':S.name=($('#pn').value.trim()||'Joueur').slice(0,16);var ag=parseInt($('#pa').value,10);S.age=ag>=5&&ag<=120?ag:'';S.country=$('#pc').value;save();toast('Profil enregistré.');break;
+case 'addq':try{var arr=JSON.parse($('#iq').value),n=0,bad=0;if(!Array.isArray(arr))throw 0;arr.forEach(function(q){var okq=Array.isArray(q)&&q.length>=6&&q[0]>=0&&q[0]<=20&&q[1]>=1&&q[1]<=5&&typeof q[2]==='string'&&((Array.isArray(q[3])&&q[3].length>=2&&q[3].length<=5&&q[4]>=0&&q[4]<q[3].length)||typeof q[3]==='string');if(!okq||BANK.some(function(b){return hs(b)===hs(q)})){bad++;return}extra.push(q);BANK.push(q);n++});lset(KX,JSON.stringify(extra));toast(n+' ajoutée(s), '+bad+' ignorée(s) (invalide ou doublon).');render()}catch(e){toast('Format JSON invalide.')}break;
+case 'reset':if(confirm('Tout effacer et recommencer à zéro ?')){S=def();save();nav('home')}break;
+case 'close':var m=$('#md');if(m)m.remove();if(Q.length)nextQ();break}}
+document.addEventListener('click',function(e){var t=e.target.closest('[data-a]');if(!t)return;var s=t.getAttribute('data-a'),i=s.indexOf(':'),a=i<0?s:s.slice(0,i),p=i<0?'':s.slice(i+1);
+if(t.closest('#md')&&a!=='close'){var m=$('#md');if(m)m.remove()}
+try{act(a,p)}catch(err){toast('Erreur : '+err.message)}});
+document.addEventListener('keydown',function(e){if(e.key==='Enter'&&e.target.id==='in')ans()});
+window.addEventListener('error',function(e){try{toast('Erreur : '+e.message)}catch(x){}});
+render();
+})();
+</script></body></html>
